@@ -41,7 +41,7 @@ export class UploadService {
     fullPath += fileName ? fileName : this.generateFileName();
     fullPath += `.${this.getExtension(file.filename)}`;
     const upload = this.firebase.storage
-      .bucket('zormor.appspot.com')
+      .bucket('bucket.appspot.com')
       .file(fullPath);
     await upload.save(buffer, {
       public: true,
@@ -52,7 +52,7 @@ export class UploadService {
   async deleteFromFirebase({ path }) {
     //TODO: send to queue
     await this.firebase.storage
-      .bucket('zormor.appspot.com')
+      .bucket('bucket.appspot.com')
       .file(path)
       .delete();
     return;

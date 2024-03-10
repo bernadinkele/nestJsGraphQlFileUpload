@@ -162,9 +162,9 @@ type Like {
 }
 
 type Mutation {
-  adminCreateBlog(createBlogInput: CreateBlogInput!): Blog!
-  adminRemoveBlog(id: String!): Blog!
-  adminUpdateBlog(updateBlogInput: UpdateBlogInput!): Blog!
+  CreateBlog(createBlogInput: CreateBlogInput!): Blog!
+  RemoveBlog(id: String!): Blog!
+  UpdateBlog(updateBlogInput: UpdateBlogInput!): Blog!
 }
 
 type PaginatedBlog {
@@ -188,8 +188,8 @@ input PaginationInput {
 }
 
 type Query {
-  adminBlog(id: String!): Blog!
-  adminBlogs(options: PaginatedEntityInput!): PaginatedBlog!
+  Blog(id: String!): Blog!
+  Blogs(options: PaginatedEntityInput!): PaginatedBlog!
 }
 
 type SocialsDetails {

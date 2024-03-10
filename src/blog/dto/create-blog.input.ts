@@ -3,6 +3,12 @@ import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
 import * as Upload from 'graphql-upload/Upload.js';
 @InputType()
 export class CreateBlogInput {
+  @Field(() => GraphQLUpload, {
+    nullable: true,
+    description: 'Images file',
+  })
+  imageFile: Upload;
+
   @Field({
     nullable: false,
     description: 'Title',
@@ -71,12 +77,6 @@ export class CreateBlogInput {
 
   @Field({ nullable: false, description: 'featured' })
   featured: boolean;
-
-  @Field(() => GraphQLUpload, {
-    nullable: true,
-    description: 'Images file',
-  })
-  imageFile: Upload;
 
   @Field(() => [String], {
     nullable: true,
