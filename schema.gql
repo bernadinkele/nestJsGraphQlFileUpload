@@ -1,0 +1,268 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Blog {
+  """Blog"""
+  comments: [Comment]
+
+  """content"""
+  content: String!
+  createdAt: DateTime!
+
+  """credits"""
+  credits: [String!]
+  deletedAt: DateTime
+
+  """featured"""
+  featured: Boolean!
+
+  """html content"""
+  htmlContent: String!
+
+  """Id"""
+  id: String!
+
+  """Image"""
+  image: String
+
+  """internal tags"""
+  internalTags: [String!]
+
+  """Blog"""
+  likes: [Like]
+
+  """publish"""
+  publish: Boolean!
+
+  """short description"""
+  shortDescription: String!
+
+  """slug"""
+  slug: String!
+
+  """status"""
+  status: Boolean!
+
+  """tags"""
+  tags: [String!]
+
+  """time to read"""
+  timeToRead: Float!
+
+  """Title"""
+  title: String!
+  updatedAt: DateTime!
+}
+
+type Comment {
+  """Blog"""
+  blog: Blog!
+  createdAt: DateTime!
+  deletedAt: DateTime
+
+  """Id"""
+  id: String!
+
+  """images"""
+  images: [String!]
+
+  """like"""
+  likes: [Like!]!
+
+  """parent"""
+  parent: Comment
+
+  """replies"""
+  replies: [Comment]
+
+  """text"""
+  text: String!
+  updatedAt: DateTime!
+}
+
+input CreateBlogInput {
+  """Cities"""
+  cityIds: [String!]
+
+  """content"""
+  content: String
+
+  """Cities"""
+  countryIds: [String!]
+
+  """credits"""
+  credits: [String!]
+
+  """featured"""
+  featured: Boolean!
+
+  """html content"""
+  htmlContent: String!
+
+  """Image"""
+  image: String
+
+  """Images file"""
+  imageFile: Upload
+
+  """internal tags"""
+  internalTags: [String!]
+
+  """Places"""
+  placeIds: [String!]
+
+  """publish"""
+  publish: Boolean!
+
+  """short description"""
+  shortDescription: String
+
+  """slug"""
+  slug: String
+
+  """status"""
+  status: Boolean!
+
+  """tags"""
+  tags: [String!]
+
+  """Title"""
+  title: String!
+
+  """User"""
+  userId: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Day {
+  status: Boolean!
+  times: Times!
+}
+
+input FilterInput {
+  column: String!
+  value: String!
+}
+
+type Like {
+  """Blog"""
+  blog: Blog!
+
+  """Comment"""
+  comment: Comment!
+  createdAt: DateTime!
+
+  """Id"""
+  id: String!
+}
+
+type Mutation {
+  adminCreateBlog(createBlogInput: CreateBlogInput!): Blog!
+  adminRemoveBlog(id: String!): Blog!
+  adminUpdateBlog(updateBlogInput: UpdateBlogInput!): Blog!
+}
+
+type PaginatedBlog {
+  hasNextPage: Boolean
+  pageCount: Int
+  pageTotal: Int!
+  results: [Blog]!
+  total: Int!
+}
+
+input PaginatedEntityInput {
+  filters: [FilterInput]
+  pagination: PaginationInput!
+  search: FilterInput
+  sorting: SortingInput
+}
+
+input PaginationInput {
+  limit: Int!
+  page: Int!
+}
+
+type Query {
+  adminBlog(id: String!): Blog!
+  adminBlogs(options: PaginatedEntityInput!): PaginatedBlog!
+}
+
+type SocialsDetails {
+  photo: String
+  refreshToken: String
+  token: String
+  username: String
+}
+
+input SortingInput {
+  column: String!
+  order: String!
+}
+
+type Times {
+  allDay: Boolean!
+  close: String!
+  open: String!
+}
+
+input UpdateBlogInput {
+  """Cities"""
+  cityIds: [String!]
+
+  """content"""
+  content: String
+
+  """Cities"""
+  countryIds: [String!]
+
+  """credits"""
+  credits: [String!]
+
+  """featured"""
+  featured: Boolean
+
+  """html content"""
+  htmlContent: String
+  id: String!
+
+  """Image"""
+  image: String
+
+  """Images file"""
+  imageFile: Upload
+
+  """internal tags"""
+  internalTags: [String!]
+
+  """Places"""
+  placeIds: [String!]
+
+  """publish"""
+  publish: Boolean
+
+  """short description"""
+  shortDescription: String
+
+  """slug"""
+  slug: String
+
+  """status"""
+  status: Boolean
+
+  """tags"""
+  tags: [String!]
+
+  """Title"""
+  title: String
+
+  """User"""
+  userId: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
